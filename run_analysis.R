@@ -8,13 +8,13 @@ unzip("HW.zip",exdir="./data/HW")
 #list.files()  ## <-- Uncomment to see if the files are correct
 
 ## Read the files into data frames 
-test_data<-read.table("/Users/aarongowins/data/HW/UCI HAR Dataset/test/X_test.txt")
-train_data<-read.table("/Users/aarongowins/data/HW/UCI HAR Dataset/train/X_train.txt")
+test_data<-read.table("./data/HW/UCI HAR Dataset/test/X_test.txt")
+train_data<-read.table("./data/HW/UCI HAR Dataset/train/X_train.txt")
 
 ## 1. Concatenate the training and the test sets to create one data set.:
 merged_data<-rbind(test_data,train_data)
 #dim(merged_data) ## <-- uncomment to see if you like the data frame
-feat<-read.table("/Users/aarongowins/data/HW/UCI HAR Dataset/features.txt")
+feat<-read.table("./data/HW/UCI HAR Dataset/features.txt")
 
 ## 2. Extracts only the measurements on the mean and standard deviation for each measurement.:
 ## Find those elements:
@@ -36,16 +36,16 @@ names(std_cols)<-s
 names(mean_cols)<-m
 
 ## Read in the activity data key:
-activity<-read.table("/Users/aarongowins/data/HW/UCI HAR Dataset/activity_labels.txt")
+activity<-read.table("./data/HW/UCI HAR Dataset/activity_labels.txt")
 ## Read in and concatenate the activity data:
-y_train<-read.table("/Users/aarongowins/data/HW/UCI HAR Dataset/train/y_train.txt")
-y_test<-read.table("/Users/aarongowins/data/HW/UCI HAR Dataset/test/y_test.txt")
+y_train<-read.table("./data/HW/UCI HAR Dataset/train/y_train.txt")
+y_test<-read.table("./data/HW/UCI HAR Dataset/test/y_test.txt")
 merge_y<-rbind(y_test,y_train)
 activities<-activity$V2[match(merge_y$V1,activity$V1)]
 
 ## Read in and concatenate the subject data:
-subject_train<-read.table("/Users/aarongowins/data/HW/UCI HAR Dataset/train/subject_train.txt")
-subject_test<-read.table("/Users/aarongowins/data/HW/UCI HAR Dataset/test/subject_test.txt")
+subject_train<-read.table("./data/HW/UCI HAR Dataset/train/subject_train.txt")
+subject_test<-read.table("./data/HW/UCI HAR Dataset/test/subject_test.txt")
 merge_subject<-rbind(subject_test,subject_train)
 
 ## Concatenate the mean and std dataframes (finally)
